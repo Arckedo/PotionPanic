@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmo2k12o8bsrk"]
+
+[ext_resource type="Script" uid="uid://b1r6c3pnj07xk" path="res://scripts/ecrantitre.gd" id="1_0vns5"]
+[ext_resource type="Texture2D" uid="uid://c2myv3nxsgrq5" path="res://assets/NilsAssets/fond ecran.png" id="2_8wacg"]
+[ext_resource type="AudioStream" uid="uid://x7ed5nlie56k" path="res://assets/cest_musique_des_potions.mp3" id="4_2ptb1"]
+[ext_resource type="Theme" uid="uid://m7ry5m638h7y" path="res://assets/ButtonThemes/main_menu_theme.tres" id="4_xxkhp"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0vns5")
+metadata/_edit_horizontal_guides_ = [12.0]
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -76.0
+offset_right = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8wacg")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 515.0
+offset_top = 451.0
+offset_right = -541.0
+offset_bottom = -13.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_xxkhp")
+text = "PLAY"
+
+[node name="TutoButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_xxkhp")
+text = "TUTORIAL"
+
+[node name="OptionButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_xxkhp")
+text = "OPTION"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_xxkhp")
+text = "EXIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2ptb1")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TutoButton" to="." method="_on_tuto_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

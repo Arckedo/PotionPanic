@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7jwdq8vju62j"]
+
+[ext_resource type="Texture2D" uid="uid://bbfhptut5bxxp" path="res://assets/Space_Stars1.svg" id="1_sjcup"]
+
+[node name="BG" type="CanvasLayer"]
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 346.0
+offset_right = 692.0
+offset_bottom = 346.0
+texture = ExtResource("1_sjcup")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 346.0
+offset_bottom = 346.0
+texture = ExtResource("1_sjcup")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 346.0
+offset_top = 346.0
+offset_right = 692.0
+offset_bottom = 692.0
+texture = ExtResource("1_sjcup")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+texture_filter = 1
+offset_top = 346.0
+offset_right = 346.0
+offset_bottom = 692.0
+texture = ExtResource("1_sjcup")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 1038.0
+offset_right = 1384.0
+offset_bottom = 346.0
+texture = ExtResource("1_sjcup")
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 692.0
+offset_right = 1038.0
+offset_bottom = 346.0
+texture = ExtResource("1_sjcup")
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 1038.0
+offset_top = 346.0
+offset_right = 1384.0
+offset_bottom = 692.0
+texture = ExtResource("1_sjcup")
+
+[node name="TextureRect8" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 692.0
+offset_top = 346.0
+offset_right = 1038.0
+offset_bottom = 692.0
+texture = ExtResource("1_sjcup")

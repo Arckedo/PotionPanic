@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0qpc5ohip7ef"]
+
+[ext_resource type="Script" uid="uid://s7il1hsic27x" path="res://scripts/game_over_screen.gd" id="1_jw6e5"]
+[ext_resource type="Theme" uid="uid://c82qsnsi0yuhj" path="res://assets/ButtonThemes/game_over_button_theme.tres" id="2_61w2s"]
+[ext_resource type="Texture2D" uid="uid://cv4tl77dgq6p6" path="res://assets/NilsAssets/game-over.png" id="2_jw6e5"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jw6e5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -573.0
+offset_top = -350.0
+offset_right = 580.0
+offset_bottom = 360.0
+texture = ExtResource("2_jw6e5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -305.0
+offset_top = 240.0
+offset_right = -141.0
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RetryButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_61w2s")
+text = "Retry"
+
+[node name="BackToMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_61w2s")
+text = "Back to main menu"
+
+[connection signal="pressed" from="VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://m4btmfhff7en"]
+
+[ext_resource type="Script" uid="uid://cjavxj33ocrkh" path="res://scripts/optionscreen.gd" id="1_v6f1h"]
+[ext_resource type="Texture2D" uid="uid://cy7pjdplxqtue" path="res://assets/NilsAssets/fond ecran-sans titre.png" id="2_2n7rx"]
+[ext_resource type="Theme" uid="uid://m7ry5m638h7y" path="res://assets/ButtonThemes/main_menu_theme.tres" id="2_rd5t5"]
+[ext_resource type="AudioStream" uid="uid://x7ed5nlie56k" path="res://assets/cest_musique_des_potions.mp3" id="4_26c0t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_26c0t"]
+font_color = Color(0.537255, 0, 0.541176, 1)
+outline_size = 5
+outline_color = Color(0.392157, 0, 0.768627, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2n7rx"]
+font_color = Color(0.533333, 0, 0.533333, 1)
+outline_size = 5
+outline_color = Color(0.403922, 0, 0.752941, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rd5t5"]
+color = Color(0.271557, 0.0161527, 0.574226, 1)
+thickness = 5
+
+[sub_resource type="Theme" id="Theme_2n7rx"]
+HSlider/styles/slider = SubResource("StyleBoxLine_rd5t5")
+
+[node name="Optionscreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v6f1h")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -802.0
+offset_top = -735.0
+offset_right = 699.0
+offset_bottom = 340.0
+texture = ExtResource("2_2n7rx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -2050.0
+offset_top = -252.0
+offset_right = -779.0
+offset_bottom = 580.0
+texture = ExtResource("2_2n7rx")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_left = -465.0
+offset_right = -78.0
+offset_bottom = 144.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_26c0t")
+horizontal_alignment = 1
+
+[node name="Volume" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_2n7rx")
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2n7rx")
+min_value = -30.0
+max_value = 0.0
+value = -10.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rd5t5")
+text = "BACK"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_26c0t")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

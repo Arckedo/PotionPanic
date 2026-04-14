@@ -1,0 +1,308 @@
+[gd_scene load_steps=32 format=3 uid="uid://dxhh3bs77brug"]
+
+[ext_resource type="PackedScene" uid="uid://b7jwdq8vju62j" path="res://scenes/bg.tscn" id="1_6bp64"]
+[ext_resource type="Script" uid="uid://bdxy0tiux3cfe" path="res://scripts/main.gd" id="1_choun"]
+[ext_resource type="PackedScene" uid="uid://cl37iq7psyufe" path="res://scenes/map.tscn" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://cbx4upbfyywil" path="res://scenes/chaudron.tscn" id="2_21xkr"]
+[ext_resource type="Script" uid="uid://b2jtswmfoyeoe" path="res://scripts/camera_2d.gd" id="3_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dc2i74mm1reh1" path="res://scenes/player.tscn" id="4_344ge"]
+[ext_resource type="Script" uid="uid://bv1mj6x4qbwpm" path="res://scripts/player.gd" id="5_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://brhc3nbeg7ft3" path="res://scenes/box.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://be8gay08yf5et" path="res://scenes/ingredient.tscn" id="6_85g3d"]
+[ext_resource type="Script" uid="uid://dcyhpxaiib6f0" path="res://scripts/boxes.gd" id="6_tipki"]
+[ext_resource type="Script" uid="uid://b7emcsfo2nseh" path="res://scripts/ingredient.gd" id="7_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://we4yp2lxtui2" path="res://assets/NilsAssets/Ingredients/yeux.png" id="10_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://bqed0pfm1asxb" path="res://assets/NilsAssets/Ingredients/salade.png" id="10_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://dd4g28k07mjnf" path="res://assets/NilsAssets/Ingredients/champi.png" id="11_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://b8m375n1dc1rf" path="res://assets/NilsAssets/Ingredients/mercure.png" id="12_jbj1t"]
+[ext_resource type="Script" uid="uid://bpgpfy2ydvfbr" path="res://scripts/chaudron.gd" id="13_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://cvvodh0q558j3" path="res://scenes/pausecanva.tscn" id="17_muem4"]
+[ext_resource type="PackedScene" uid="uid://dmpwp4oh5k1y1" path="res://heart.tscn" id="18_0ld40"]
+[ext_resource type="AudioStream" uid="uid://duq5uxy50cfqi" path="res://assets/ça_va_saigner_des_oreilles.mp3" id="18_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://083vo2ujnuv8" path="res://scenes/HUD.tscn" id="18_gqmmt"]
+[ext_resource type="Script" uid="uid://n4mo00mules1" path="res://scenes/area_2d.gd" id="21_yc10j"]
+[ext_resource type="PackedScene" uid="uid://begxxv7ciwagh" path="res://scenes/mechant.tscn" id="22_jscy8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
+size = Vector2(1323.75, 4343.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
+size = Vector2(5426, 1722)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynf5e"]
+size = Vector2(6014, 1084.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hptm8"]
+size = Vector2(1373.75, 4356)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
+radius = 518.89
+height = 1899.78
+
+[sub_resource type="Gradient" id="Gradient_jbj1t"]
+offsets = PackedFloat32Array(0.0833333, 0.384615, 0.679487)
+colors = PackedColorArray(0.101961, 0.00784314, 0, 0.462745, 0.945783, 0, 0.0979707, 0.454902, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_muem4"]
+gradient = SubResource("Gradient_jbj1t")
+fill = 1
+fill_from = Vector2(0.491379, 0.517241)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_muem4"]
+radius = 415.0
+height = 830.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jscy8"]
+radius = 383.0
+height = 766.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_choun")
+violence_increase_rate = 0.2
+
+[node name="BG" parent="." instance=ExtResource("1_6bp64")]
+layer = -1
+
+[node name="Map" parent="." instance=ExtResource("1_kry3j")]
+
+[node name="Walls" type="Node2D" parent="Map" groups=["wall"]]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Map/Walls" groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls/StaticBody2D2"]
+position = Vector2(-2915.13, -327)
+shape = SubResource("RectangleShape2D_6bp64")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/Walls" groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls/StaticBody2D"]
+position = Vector2(12, -2646)
+shape = SubResource("RectangleShape2D_344ge")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Map/Walls" groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls/StaticBody2D3"]
+position = Vector2(94, 2153.63)
+shape = SubResource("RectangleShape2D_ynf5e")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Map/Walls" groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls/StaticBody2D4"]
+position = Vector2(3082.13, -393)
+shape = SubResource("RectangleShape2D_hptm8")
+
+[node name="Player" parent="." instance=ExtResource("4_344ge")]
+position = Vector2(-2, 285)
+scale = Vector2(8.02, 8.02)
+script = ExtResource("5_ynf5e")
+max_speed = 1700.0
+
+[node name="Yeux" parent="Player" instance=ExtResource("6_85g3d")]
+visible = false
+z_index = 4
+position = Vector2(-0.498753, 42.5187)
+scale = Vector2(-0.01, -0.01)
+script = ExtResource("7_jkv2x")
+rotation_speed = 90.0
+radius = 50.0
+base_position = 0.0
+ingredient_texture = ExtResource("10_a8y0u")
+
+[node name="Champi" parent="Player" instance=ExtResource("6_85g3d")]
+visible = false
+z_index = 4
+position = Vector2(-37.1571, 0.623443)
+scale = Vector2(-0.01, -0.01)
+script = ExtResource("7_jkv2x")
+rotation_speed = 90.0
+radius = 50.0
+base_position = 25.0
+ingredient_texture = ExtResource("11_jkv2x")
+
+[node name="Mercure" parent="Player" instance=ExtResource("6_85g3d")]
+visible = false
+z_index = 4
+position = Vector2(-2.38419e-07, -38.1546)
+scale = Vector2(-0.01, -0.01)
+script = ExtResource("7_jkv2x")
+rotation_speed = 90.0
+radius = 50.0
+base_position = 50.0
+ingredient_texture = ExtResource("12_jbj1t")
+
+[node name="Salade" parent="Player" instance=ExtResource("6_85g3d")]
+visible = false
+z_index = 4
+position = Vector2(38.5287, 0.872819)
+scale = Vector2(-0.01, -0.01)
+script = ExtResource("7_jkv2x")
+rotation_speed = 90.0
+radius = 50.0
+base_position = 75.0
+ingredient_texture = ExtResource("10_ya4ey")
+
+[node name="Chaudron" parent="." instance=ExtResource("2_21xkr")]
+position = Vector2(-4, -60)
+script = ExtResource("13_jbj1t")
+
+[node name="ZoneCamera" type="Area2D" parent="Chaudron"]
+
+[node name="CollisionZoneCamera" type="CollisionShape2D" parent="Chaudron/ZoneCamera"]
+position = Vector2(2.89017, 13.0058)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lquwl")
+
+[node name="RequestIngredient" type="Node2D" parent="Chaudron"]
+
+[node name="Sprite2D5" type="Sprite2D" parent="Chaudron/RequestIngredient"]
+position = Vector2(406, 52)
+scale = Vector2(5.7728, 5.7728)
+texture = SubResource("GradientTexture2D_muem4")
+
+[node name="Mercure" parent="Chaudron/RequestIngredient" instance=ExtResource("6_85g3d")]
+position = Vector2(406, 52)
+scale = Vector2(0.04, 0.04)
+ingredient_texture = ExtResource("12_jbj1t")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Chaudron/RequestIngredient"]
+position = Vector2(201, -307)
+scale = Vector2(5.7728, 5.7728)
+texture = SubResource("GradientTexture2D_muem4")
+
+[node name="Salade" parent="Chaudron/RequestIngredient" instance=ExtResource("6_85g3d")]
+position = Vector2(201, -307)
+scale = Vector2(0.04, 0.04)
+ingredient_texture = ExtResource("10_ya4ey")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Chaudron/RequestIngredient"]
+position = Vector2(-215, -301)
+scale = Vector2(5.7728, 5.7728)
+texture = SubResource("GradientTexture2D_muem4")
+
+[node name="Yeux" parent="Chaudron/RequestIngredient" instance=ExtResource("6_85g3d")]
+position = Vector2(-215, -301)
+scale = Vector2(0.04, 0.04)
+ingredient_texture = ExtResource("10_a8y0u")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Chaudron/RequestIngredient"]
+position = Vector2(-427.27, 55.7296)
+scale = Vector2(5.7728, 5.7728)
+texture = SubResource("GradientTexture2D_muem4")
+
+[node name="Champi" parent="Chaudron/RequestIngredient" instance=ExtResource("6_85g3d")]
+position = Vector2(-427.27, 55.7296)
+scale = Vector2(0.04, 0.04)
+ingredient_texture = ExtResource("11_jkv2x")
+
+[node name="Contact" type="Area2D" parent="Chaudron"]
+position = Vector2(4, 60)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chaudron/Contact"]
+position = Vector2(-17, -4)
+shape = SubResource("CapsuleShape2D_muem4")
+
+[node name="Boxes" type="Node2D" parent="."]
+position = Vector2(-4.20241, -0.400809)
+scale = Vector2(3.46, 3.46)
+script = ExtResource("6_tipki")
+
+[node name="Yeux" parent="Boxes" instance=ExtResource("6_21xkr")]
+position = Vector2(-560.346, -377.052)
+scale = Vector2(0.289017, 0.289017)
+item_name = "Yeux"
+ingredient_texture = ExtResource("10_a8y0u")
+
+[node name="Champi" parent="Boxes" instance=ExtResource("6_21xkr")]
+position = Vector2(598.324, -377.052)
+scale = Vector2(0.289017, 0.289017)
+item_name = "Champi"
+ingredient_texture = ExtResource("11_jkv2x")
+
+[node name="Mercure" parent="Boxes" instance=ExtResource("6_21xkr")]
+position = Vector2(604.972, 396.07)
+scale = Vector2(0.289017, 0.289017)
+item_name = "Mercure"
+ingredient_texture = ExtResource("12_jbj1t")
+
+[node name="Salade" parent="Boxes" instance=ExtResource("6_21xkr")]
+position = Vector2(-566.126, 398.96)
+scale = Vector2(0.289017, 0.289017)
+item_name = "Salade"
+ingredient_texture = ExtResource("10_ya4ey")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3.20241, -0.400809)
+scale = Vector2(3.46, 3.46)
+zoom = Vector2(0.345, 0.345)
+script = ExtResource("3_6bp64")
+follow_speed = 12.0
+offset_lerp_speed = 1500.0
+max_offset = Vector2(900, 900)
+influence_distance = 700.0
+min_zoom = 0.5
+max_zoom = 0.3
+min_zoom_distance = 500.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Timer" type="Timer" parent="UI"]
+
+[node name="PVLabel" type="Label" parent="UI"]
+offset_left = 3.71759
+offset_top = -0.400809
+offset_right = 123.718
+offset_bottom = 58.5992
+
+[node name="ViolenceBar" type="ProgressBar" parent="UI"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -289.0
+offset_right = -110.0
+offset_bottom = 27.0
+grow_horizontal = 0
+
+[node name="TimeBar" type="ProgressBar" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.065
+anchor_right = 0.5
+anchor_bottom = 0.065
+offset_left = -122.0
+offset_top = -0.120003
+offset_right = 108.0
+offset_bottom = 34.88
+grow_horizontal = 2
+fill_mode = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("17_muem4")]
+
+[node name="HUD" parent="." instance=ExtResource("18_gqmmt")]
+
+[node name="Heart" parent="." instance=ExtResource("18_0ld40")]
+visible = true
+script = null
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_dp3eg")
+volume_db = -10.0
+autoplay = true
+max_distance = 10000.0
+attenuation = 0.000850148
+parameters/looping = true
+
+[node name="SpawnArea" type="Area2D" parent="." node_paths=PackedStringArray("spawn_timer")]
+script = ExtResource("21_yc10j")
+spawn_object = ExtResource("22_jscy8")
+spawn_chance = 1.0
+spawn_timer = NodePath("Timer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2(1565, 22)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jscy8")
+debug_color = Color(0.995176, 0, 0.2098, 0.42)
+
+[node name="Timer" type="Timer" parent="SpawnArea"]
+autostart = true

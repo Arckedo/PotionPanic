@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl37iq7psyufe"]
+
+[ext_resource type="Texture2D" uid="uid://p3h2fchv53v1" path="res://assets/NilsAssets/Sprite ground.png" id="1_ci6au"]
+[ext_resource type="Texture2D" uid="uid://c4dhg1c5xdg8f" path="res://assets/NilsAssets/mur arriére.png" id="1_gldc4"]
+[ext_resource type="Texture2D" uid="uid://kuei4bxj5eha" path="res://assets/NilsAssets/mur cotés.png" id="3_0cso3"]
+
+[sub_resource type="Gradient" id="Gradient_ci6au"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.394246, 0.203236, 0.133064, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_26yhd"]
+gradient = SubResource("Gradient_ci6au")
+
+[node name="Map" type="Node2D"]
+
+[node name="MurArriére2" type="Sprite2D" parent="."]
+position = Vector2(94.5002, -2076)
+scale = Vector2(1.52879, 1)
+texture = ExtResource("1_gldc4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(84.7811, -6)
+scale = Vector2(72.3193, 50.375)
+texture = SubResource("GradientTexture2D_26yhd")
+
+[node name="SpriteGround" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(1.55103, 1.06714)
+texture = ExtResource("1_ci6au")
+
+[node name="MurCotés" type="Sprite2D" parent="."]
+position = Vector2(2471, -180)
+scale = Vector2(1, 1.29315)
+texture = ExtResource("3_0cso3")
+
+[node name="MurCotés2" type="Sprite2D" parent="."]
+position = Vector2(-2194, -258)
+scale = Vector2(1, 1.28427)
+texture = ExtResource("3_0cso3")
+
+[node name="MurCotés3" type="Sprite2D" parent="."]
+position = Vector2(-30.3007, 1741)
+rotation = 1.5708
+scale = Vector2(1.2069, 1.54098)
+texture = ExtResource("3_0cso3")

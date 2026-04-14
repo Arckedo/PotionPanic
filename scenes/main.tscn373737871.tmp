@@ -1,0 +1,110 @@
+[gd_scene load_steps=14 format=3 uid="uid://dxhh3bs77brug"]
+
+[ext_resource type="PackedScene" uid="uid://b7jwdq8vju62j" path="res://scenes/bg.tscn" id="1_6bp64"]
+[ext_resource type="PackedScene" uid="uid://cl37iq7psyufe" path="res://scenes/map.tscn" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://cbx4upbfyywil" path="res://scenes/chaudron.tscn" id="2_21xkr"]
+[ext_resource type="Script" uid="uid://b2jtswmfoyeoe" path="res://scripts/camera_2d.gd" id="3_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dc2i74mm1reh1" path="res://scenes/player.tscn" id="4_344ge"]
+[ext_resource type="Script" uid="uid://bv1mj6x4qbwpm" path="res://scripts/player.gd" id="5_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://brhc3nbeg7ft3" path="res://scenes/box.tscn" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://dcyhpxaiib6f0" path="res://scripts/boxes.gd" id="6_tipki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
+size = Vector2(1323.75, 4343.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
+size = Vector2(5426, 1722)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynf5e"]
+size = Vector2(6014, 1084.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hptm8"]
+size = Vector2(1373.75, 4356)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
+radius = 518.89
+height = 1899.78
+
+[node name="Main" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource("1_6bp64")]
+layer = -1
+
+[node name="Map" parent="." instance=ExtResource("1_kry3j")]
+
+[node name="Walls" type="Node2D" parent="Map"]
+visible = false
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Map/Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls/StaticBody2D2"]
+position = Vector2(-2915.13, -327)
+shape = SubResource("RectangleShape2D_6bp64")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls/StaticBody2D"]
+position = Vector2(12, -2646)
+shape = SubResource("RectangleShape2D_344ge")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Map/Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls/StaticBody2D3"]
+position = Vector2(94, 2153.63)
+shape = SubResource("RectangleShape2D_ynf5e")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Map/Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls/StaticBody2D4"]
+position = Vector2(3082.13, -393)
+shape = SubResource("RectangleShape2D_hptm8")
+
+[node name="Player" parent="." instance=ExtResource("4_344ge")]
+position = Vector2(-2, 285)
+scale = Vector2(8.02, 8.02)
+script = ExtResource("5_ynf5e")
+max_speed = 1700.0
+
+[node name="Chaudron" parent="." instance=ExtResource("2_21xkr")]
+position = Vector2(-4, -60)
+
+[node name="ZoneCamera" type="Area2D" parent="Chaudron"]
+
+[node name="CollisionZoneCamera" type="CollisionShape2D" parent="Chaudron/ZoneCamera"]
+position = Vector2(2.89017, 13.0058)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lquwl")
+
+[node name="Boxes" type="Node2D" parent="."]
+position = Vector2(-4.20241, -0.400809)
+scale = Vector2(3.46, 3.46)
+script = ExtResource("6_tipki")
+
+[node name="Box4" parent="Boxes" instance=ExtResource("6_21xkr")]
+position = Vector2(-560.346, -377.052)
+scale = Vector2(0.289017, 0.289017)
+
+[node name="Box3" parent="Boxes" instance=ExtResource("6_21xkr")]
+position = Vector2(598.324, -377.052)
+scale = Vector2(0.289017, 0.289017)
+
+[node name="Box2" parent="Boxes" instance=ExtResource("6_21xkr")]
+position = Vector2(604.972, 396.07)
+scale = Vector2(0.289017, 0.289017)
+
+[node name="Box1" parent="Boxes" instance=ExtResource("6_21xkr")]
+position = Vector2(-566.126, 398.96)
+scale = Vector2(0.289017, 0.289017)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3.20241, -0.400809)
+scale = Vector2(3.46, 3.46)
+zoom = Vector2(0.345, 0.345)
+script = ExtResource("3_6bp64")
+follow_speed = 12.0
+offset_lerp_speed = 1500.0
+max_offset = Vector2(900, 900)
+influence_distance = 700.0
+min_zoom = 0.5
+max_zoom = 0.3
+min_zoom_distance = 500.0

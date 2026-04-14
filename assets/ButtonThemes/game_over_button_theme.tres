@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c82qsnsi0yuhj"]
+
+[ext_resource type="StyleBox" uid="uid://jfvvfkvnnr4b" path="res://assets/ButtonThemes/hover_light_purple.tres" id="1_hw102"]
+[ext_resource type="StyleBox" uid="uid://dxjqm1jxiao0x" path="res://assets/ButtonThemes/nomal_red.tres" id="2_b1e33"]
+
+[resource]
+Button/styles/hover = ExtResource("1_hw102")
+Button/styles/normal = ExtResource("2_b1e33")

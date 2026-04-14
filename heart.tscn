@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmpwp4oh5k1y1"]
+
+[ext_resource type="Script" uid="uid://bl3sy51c3kfeh" path="res://heart.gd" id="1_7p8dj"]
+[ext_resource type="Texture2D" uid="uid://bt7cwyei8rlii" path="res://assets/NilsAssets/HUD.png" id="1_cixvg"]
+
+[node name="Heart" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_7p8dj")
+
+[node name="Heart1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 99.445)
+offset_right = 233.0
+offset_bottom = 191.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_cixvg")
+
+[node name="Heart2" type="TextureRect" parent="."]
+offset_left = 80.0
+offset_right = 313.0
+offset_bottom = 191.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_cixvg")
+
+[node name="Heart3" type="TextureRect" parent="."]
+offset_left = 160.0
+offset_right = 393.0
+offset_bottom = 191.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_cixvg")
+
+[node name="Timer" type="Timer" parent="."]

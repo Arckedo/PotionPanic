@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://dc2i74mm1reh1"]
+
+[ext_resource type="Texture2D" uid="uid://ck3qsltxb8cuf" path="res://assets/NilsAssets/dessin.png" id="1_3vyb7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v0iea"]
+load_path = "res://.godot/imported/dessin.png-80764fa8301c93a51684982c23e2d18e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
+atlas = SubResource("CompressedTexture2D_v0iea")
+region = Rect2(0, 0, 134, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(133, 0, 132, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(266, 0, 132, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(399, 0, 132, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0iea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvnsp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t5aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 12.0
+height = 42.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(42.105, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.104988, 9.53674e-07)
+scale = Vector2(0.217332, 0.238281)
+sprite_frames = SubResource("SpriteFrames_v0iea")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.510306
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.105, 0)
+shape = SubResource("CapsuleShape2D_onrkg")

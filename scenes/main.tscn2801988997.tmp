@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxhh3bs77brug"]
+
+[ext_resource type="PackedScene" uid="uid://cl37iq7psyufe" path="res://Scenes/map.tscn" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://cbx4upbfyywil" path="res://Scenes/chaudron.tscn" id="2_21xkr"]
+[ext_resource type="Script" uid="uid://b2jtswmfoyeoe" path="res://Scripts/camera_2d.gd" id="3_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dc2i74mm1reh1" path="res://Scenes/player.tscn" id="4_344ge"]
+[ext_resource type="Script" uid="uid://bv1mj6x4qbwpm" path="res://Scripts/player.gd" id="5_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://brhc3nbeg7ft3" path="res://Scenes/box.tscn" id="6_21xkr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
+radius = 182.081
+height = 548.208
+
+[node name="Main" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_kry3j")]
+
+[node name="Player" parent="." instance=ExtResource("4_344ge")]
+position = Vector2(-2, 285)
+scale = Vector2(8.02, 8.02)
+script = ExtResource("5_ynf5e")
+max_speed = 1700.0
+
+[node name="Chaudron" parent="." instance=ExtResource("2_21xkr")]
+position = Vector2(0, 1)
+scale = Vector2(3.46, 3.46)
+
+[node name="ZoneCamera" type="Area2D" parent="Chaudron"]
+
+[node name="CollisionZoneCamera" type="CollisionShape2D" parent="Chaudron/ZoneCamera"]
+position = Vector2(0.404858, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lquwl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4.20241, -0.400809)
+scale = Vector2(3.46, 3.46)
+zoom = Vector2(0.345, 0.345)
+script = ExtResource("3_6bp64")
+follow_speed = 12.0
+max_offset = Vector2(900, 900)
+influence_distance = 700.0
+min_zoom = 0.5
+max_zoom = 0.3
+zoom_speed = 3.0
+min_zoom_distance = 500.0
+
+[node name="Box4" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(-2056, -1356)
+
+[node name="Box3" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(2015, -1350)
+
+[node name="Box2" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(2024, 1424)
+
+[node name="Box" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(-2037, 1422)

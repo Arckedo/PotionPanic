@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://cen6oysn8xhli"]
+
+[ext_resource type="StyleBox" uid="uid://o4hmn0eh2uw6" path="res://assets/ButtonThemes/hover_light_purple_true.tres" id="1_5d2l8"]
+[ext_resource type="Script" uid="uid://qnmasywabb71" path="res://scripts/pause_menu.gd" id="1_emv3i"]
+[ext_resource type="StyleBox" uid="uid://dxjqm1jxiao0x" path="res://assets/ButtonThemes/nomal_red.tres" id="2_5d2l8"]
+[ext_resource type="Theme" uid="uid://cmhr0eskn1m6x" path="res://assets/ButtonThemes/pause_menu_button_theme.tres" id="4_5d2l8"]
+
+[sub_resource type="Theme" id="Theme_myx47"]
+Button/styles/hover = ExtResource("1_5d2l8")
+Button/styles/normal = ExtResource("2_5d2l8")
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_myx47")
+script = ExtResource("1_emv3i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -575.0
+offset_top = -326.0
+offset_right = 574.0
+offset_bottom = 324.0
+color = Color(0, 0, 0, 0.588235)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -33.0
+offset_right = 57.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5d2l8")
+text = "Resume"
+
+[node name="BackToMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_5d2l8")
+text = "Back to Menu
+"
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://begxxv7ciwagh"]
+
+[ext_resource type="Texture2D" uid="uid://bkjg1icesw2kk" path="res://assets/NilsAssets/mob ennemi 1.png" id="2_4bjq7"]
+[ext_resource type="Script" uid="uid://yiptdfdjfnh5" path="res://scripts/mob.gd" id="5_ad3no"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f564v"]
+atlas = ExtResource("2_4bjq7")
+region = Rect2(0, 0, 845, 1240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpwhr"]
+atlas = ExtResource("2_4bjq7")
+region = Rect2(845, 0, 845, 1240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad3no"]
+atlas = ExtResource("2_4bjq7")
+region = Rect2(1690, 0, 845, 1240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4ayr"]
+atlas = ExtResource("2_4bjq7")
+region = Rect2(2535, 0, 845, 1240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_igq0b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f564v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpwhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad3no")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4ayr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sb2m2"]
+radius = 101.242
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ad3no"]
+radius = 1116.09
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["mob"]]
+position = Vector2(-148, -89)
+script = ExtResource("5_ad3no")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(145.75, 127)
+scale = Vector2(0.65503, 0.71267)
+sprite_frames = SubResource("SpriteFrames_igq0b")
+frame_progress = 0.858593
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(153, 94)
+shape = SubResource("CircleShape2D_sb2m2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["mob"]]
+position = Vector2(152, 102)
+shape = SubResource("CircleShape2D_ad3no")
+one_way_collision_margin = 40.0

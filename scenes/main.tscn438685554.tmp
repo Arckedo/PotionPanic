@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxhh3bs77brug"]
+
+[ext_resource type="PackedScene" uid="uid://cl37iq7psyufe" path="res://Scenes/map.tscn" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://cbx4upbfyywil" path="res://Scenes/chaudron.tscn" id="2_21xkr"]
+[ext_resource type="Script" uid="uid://b2jtswmfoyeoe" path="res://Scripts/camera_2d.gd" id="3_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dc2i74mm1reh1" path="res://Scenes/player.tscn" id="4_344ge"]
+[ext_resource type="Script" uid="uid://bv1mj6x4qbwpm" path="res://Scripts/player.gd" id="5_ynf5e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
+radius = 182.081
+height = 548.208
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kry3j"]
+radius = 166.474
+height = 372.254
+
+[node name="Main" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_kry3j")]
+
+[node name="Player" parent="." instance=ExtResource("4_344ge")]
+position = Vector2(-2, 285)
+scale = Vector2(8.02, 8.02)
+script = ExtResource("5_ynf5e")
+max_speed = 1700.0
+
+[node name="Chaudron" parent="." instance=ExtResource("2_21xkr")]
+position = Vector2(0, 1)
+scale = Vector2(3.46, 3.46)
+
+[node name="ZoneCamera" type="Area2D" parent="Chaudron"]
+
+[node name="CollisionZoneCamera" type="CollisionShape2D" parent="Chaudron/ZoneCamera"]
+position = Vector2(0.404858, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lquwl")
+
+[node name="Camera2D" type="Camera2D" parent="Chaudron"]
+position = Vector2(-1.21457, -0.404858)
+zoom = Vector2(0.345, 0.345)
+script = ExtResource("3_6bp64")
+follow_speed = 12.0
+offset_lerp_speed = 5.0
+max_offset = Vector2(900, 900)
+influence_distance = 700.0
+min_zoom = 0.5
+max_zoom = 0.3
+zoom_speed = 3.0
+min_zoom_distance = 500.0
+
+[node name="ZoneCamera5" type="Area2D" parent="Chaudron"]
+
+[node name="CollisionZoneCamera5" type="CollisionShape2D" parent="Chaudron/ZoneCamera5"]
+position = Vector2(-652.312, 461.561)
+rotation = 5.81742e-05
+shape = SubResource("CapsuleShape2D_kry3j")
+
+[node name="ZoneCamera4" type="Area2D" parent="Chaudron"]
+
+[node name="CollisionZoneCamera4" type="CollisionShape2D" parent="Chaudron/ZoneCamera4"]
+position = Vector2(650.867, 462.139)
+rotation = 2.90871e-05
+shape = SubResource("CapsuleShape2D_kry3j")
+
+[node name="ZoneCamera3" type="Area2D" parent="Chaudron"]
+
+[node name="CollisionZoneCamera3" type="CollisionShape2D" parent="Chaudron/ZoneCamera3"]
+position = Vector2(654.046, -466.763)
+rotation = 1.45435e-05
+shape = SubResource("CapsuleShape2D_kry3j")
+
+[node name="ZoneCamera2" type="Area2D" parent="Chaudron"]
+
+[node name="CollisionZoneCamera2" type="CollisionShape2D" parent="Chaudron/ZoneCamera2"]
+position = Vector2(-653.179, -463.873)
+rotation = -3.14159
+shape = SubResource("CapsuleShape2D_kry3j")
